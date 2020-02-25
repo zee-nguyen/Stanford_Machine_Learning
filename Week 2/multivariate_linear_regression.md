@@ -34,12 +34,11 @@ x<sub>2</sub> = number of bedrooms (1-5) &rarr; x<sub>2</sub> = number of bedroo
 
 Replace x<sub>i</sub> with x<sub>i</sub> - μ<sub>i</sub> to make features have approximately zero mean.
 
-
-
 Do not apply to x<sub>0</sub> = 1
 
 
-where <math>x</math> is an original value, <math>x'</math> is the normalized value. There is another form of the means normalization which is when we divide by the standard deviation which is also called standardization.
+
+There is another form of the means normalization which is when we divide by the standard deviation which is also called standardization.
 
 ### 3. Debugging Gradient Descent
 
@@ -50,4 +49,8 @@ Make a plot with number of iterations on the x-axis. Now plot the cost function,
 
 Declare convergence if J(θ) decreases by less than E in one iteration, where E is some small value such as 10−3. However in practice it's difficult to choose this threshold value.
 
-- If learning rate α is sufficiently small, then J(θ) will decrease on every iteration.
+### Summary
+
+- If α is too small: slow convergence.
+
+- If α is too large: ￼J(θ) may not decrease on every iteration and thus may not converge.
