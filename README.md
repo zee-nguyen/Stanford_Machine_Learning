@@ -1,2 +1,3 @@
-# Stanford_Machine_Learning
-Self learning Machine Learning course by Andrew Ing.
+# Stanford Machine Learning
+
+All notes and quizzes/materials from Machine Learning course by Andrew Ing.
