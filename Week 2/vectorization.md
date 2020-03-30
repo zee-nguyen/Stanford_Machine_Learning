@@ -15,6 +15,8 @@ end;
 
 ### Vectorized implementation
 
+- More efficient
+
 **Pseudocode:**
 
 ```
