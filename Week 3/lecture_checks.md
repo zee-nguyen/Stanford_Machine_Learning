@@ -1,4 +1,16 @@
+# Week 3 Lecture Checks
 
+![](https://github.com/zee-nguyen/Stanford_Machine_Learning/blob/master/assets/W3_Q1.png?raw=true)
+
+![](https://github.com/zee-nguyen/Stanford_Machine_Learning/blob/master/assets/W3_Q2.png?raw=true)
+
+![](https://github.com/zee-nguyen/Stanford_Machine_Learning/blob/master/assets/W3_Q3.png?raw=true)
+
+---
+
+## Vectorize Gradient Descent
+
+![](https://github.com/zee-nguyen/Stanford_Machine_Learning/blob/master/assets/W3_Q4_vectorize-gradient-descent.png?raw=true)
 
 ---
 ## The Problem of Overfitting
@@ -29,3 +41,9 @@ What if λ is set to an extremely large value (perhaps too large for our problem
 - [X] Algorithm results in underfitting (fails to fit even the training set).
 
 - [ ] Gradient descent will fail to converge.
+
+---
+
+## Regularized Logistic Regression
+
+![](https://github.com/zee-nguyen/Stanford_Machine_Learning/blob/master/assets/W3_Q5.png?raw=true)
