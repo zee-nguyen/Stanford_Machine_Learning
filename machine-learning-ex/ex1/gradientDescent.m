@@ -24,6 +24,8 @@ for iter = 1:num_iters
     delta = 1/m .* (X' * (h - y));
     theta = theta - alpha * delta;
 
+
+
     % ============================================================
 
     % Save the cost J in every iteration
