@@ -2,10 +2,10 @@
 
 Suppose you are learning to recognize cars from 100×100 pixel images (grayscale, not RGB). Let the features be pixel intensity values. If you train logistic regression including all the quadratic terms (xi,xj) as features, about how many features will you have?
 
-- [] 5,000
-- [] 100,000
+- [ ] 5,000
+- [ ] 100,000
 - [X] 50 million (5 x 10^7)
-- [] 5 billion (5 x 10^9)
+- [ ] 5 billion (5 x 10^9)
 
 **Explanation**: Take a smaller example, 1x2 sample of pixels, we have 3 groups:
 
