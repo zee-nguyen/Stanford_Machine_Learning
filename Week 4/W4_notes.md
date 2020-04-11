@@ -45,3 +45,33 @@ And by multiplying hidden layer vector with weights matrix θ for the second lay
 
 
 Ref: https://towardsdatascience.com/everything-you-need-to-know-about-neural-networks-and-backpropagation-machine-learning-made-easy-e5285bc2be3a
+
+---
+
+# Applications
+
+## Examples and Intuition
+
+![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/f_ueJLGnEea3qApInhZCFg_a5ff8edc62c9a09900eae075e8502e34_Screenshot-2016-11-23-10.03.48.png?expiry=1586736000000&hmac=5B-fBhxkT7D9k1c1g0R_Q0MrUQeGwyKlXOCGKDSlktU)
+
+g(z)
+
+![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/wMOiMrGnEeajLxLfjQiSjg_bbbdad80f5c95068bde7c9134babdd77_Screenshot-2016-11-23-10.07.24.png?expiry=1586736000000&hmac=PJ04cib9NgFq0iGMUAgsKBdFG9br5YAsMu3Q0O3WVEo)
+
+---
+
+## Multiclass Classification
+
+To classify data into multiple classes, we let our hypothesis function return a vector of values. Say we wanted to classify our data into one of four categories. We will use the following example to see how this classification is done. This algorithm takes as input an image and classifies it accordingly:
+
+![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/9Aeo6bGtEea4MxKdJPaTxA_4febc7ec9ac9dd0e4309bd1778171d36_Screenshot-2016-11-23-10.49.05.png?expiry=1586736000000&hmac=3rWvaxnolqSK8dY6j1DnGBB_W4j3TMiVVxuypRnHI4I)
+
+We can define our set of resulting classes as y:
+
+![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/KBpHLXqiEealOA67wFuqoQ_95654ff11df1261d935ab00553d724e5_Screenshot-2016-09-14-10.38.27.png?expiry=1586736000000&hmac=KOerwkbvWHdD0tBI1FoNFMZZSaRZUTZBBZhr-1-CZCo)
+
+Each y (i) represents a different image corresponding to either a car, pedestrian, truck, or motorcycle. The inner layers, each provide us with some new information which leads to our final hypothesis function. The setup looks like:
+
+![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/VBxpV7GvEeamBAoLccicqA_3e7f67888330b131426ecffd27936f61_Screenshot-2016-11-23-10.59.19.png?expiry=1586736000000&hmac=2Th63LDilsYhyJMc3HiQn1cs1xxnDNQ25g3DqR03hz4)
+
+The resulting hypothesis for one set of inputs may look like [0 0 1 0], which represents a motorcycle.
