@@ -75,3 +75,13 @@ Each y (i) represents a different image corresponding to either a car, pedestria
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/VBxpV7GvEeamBAoLccicqA_3e7f67888330b131426ecffd27936f61_Screenshot-2016-11-23-10.59.19.png?expiry=1586736000000&hmac=2Th63LDilsYhyJMc3HiQn1cs1xxnDNQ25g3DqR03hz4)
 
 The resulting hypothesis for one set of inputs may look like [0 0 1 0], which represents a motorcycle.
+
+----
+
+### Why do we need to provide the cost function and the derivative?
+
+- Cost function is to use in forward-propagate (performing this by directly applying the cost function)
+
+- Derivative of the cost function is to use in back-propagate.
+
+Ref: https://medium.com/datathings/neural-networks-and-backpropagation-explained-in-a-simple-way-f540a3611f5e
