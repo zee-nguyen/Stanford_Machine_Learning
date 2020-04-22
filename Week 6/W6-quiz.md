@@ -1,3 +1,7 @@
+## 1
+
+![](https://github.com/zee-nguyen/Stanford_Machine_Learning/blob/master/assets/W6_Quiz1_Q1.png?raw=true)
+
 ## 2
 
 Suppose you have implemented regularized logistic regression to classify what object is in an image (i.e., to do object recognition). However, when you test your hypothesis on a new set of images, you find that it makes unacceptably large errors with its predictions on the new images. However, your hypothesis performs well (has low error) on the training set. Which of the following are promising steps to take? Check all that apply.
@@ -6,6 +10,8 @@ Suppose you have implemented regularized logistic regression to classify what ob
 - [X] Try using a smaller set of features.
 - [X] Get more training examples.
 - [ ] Try adding polynomial features.
+
+**Explanation**: The hypothesis likely suffers from high variance (low error on training set but large errors on new data), so getting more training examples or using a smaller set of features will likely help.
 
 ## 3
 
@@ -26,6 +32,8 @@ Which of the following statements are true? Check all that apply.
 - [ ] Suppose you are training a regularized linear regression model. The recommended way to choose what value of regularization parameter λ to use is to choose the value of λ which gives the lowest test set error.
 - [X] The performance of a learning algorithm on the training set will typically be better than its performance on the test set.
 - [ ] Suppose you are training a regularized linear regression model.The recommended way to choose what value of regularization parameter λ to use is to choose the value of λ which gives the lowest training set error.
+
+**Explanation**: Choosing λ based on training set error is not ideal. It's the cross validation error that helps fit the hypothesis better and helps choose more appropriate λ.
 
 ## 5
 

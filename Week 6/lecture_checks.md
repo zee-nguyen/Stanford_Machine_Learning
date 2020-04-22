@@ -13,3 +13,11 @@ Suppose you fit a neural network with one hidden layer to a training set. You fi
 - [ ] Yes, because it is currently suffering from high bias.
 - [ ] No, because it is currently suffering from high bias, so adding hidden units is unlikely to help.
 - [X] No, because it is currently suffering from high variance, so adding hidden units is unlikely to help.
+
+---
+
+![](https://github.com/zee-nguyen/Stanford_Machine_Learning/blob/master/assets/W6-lecturechecks-2.png?raw=true)
+
+---
+
+![](https://github.com/zee-nguyen/Stanford_Machine_Learning/blob/master/assets/W6-lecturechecks-3.png?raw=true)
