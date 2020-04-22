@@ -48,7 +48,7 @@ The problem of choosing lambda λ:
 Approach:
 1. Create a list of λ (multiple of 2, for ex: i.e. λ ∈ {0,0.01,0.02,0.04,0.08,0.16,0.32,0.64,1.28,2.56,5.12,10.24})
 2. Create a set of models with different degrees/any other variants
-3. Iterate through the λs and for each λ, go through all the models to learn some Θ
+3. Iterate through the λs and for each λ, go through all the models to learn some Θ (on training data)
 4. Compute the cross validation error using the learned Θ (computed with λ) on the J-CV **without regularization or λ = 0**
 5. Select the best combo that produces the lowest error on the cross validation set
 6. Using the best combo of Θ and λ, apply it on J-test to see if it has a good generalization of the problem.
@@ -60,7 +60,7 @@ Approach:
 
 Using a single hidden layer is a good starting default. You can train your neural network on a number of hidden layers using your cross validation set. You can then select the one that performs best.
 
-### Model Complexity Effects:
+### Model Complexity Effects
 
 Lower-order polynomials (low model complexity) have high bias and low variance. In this case, the model fits poorly consistently.
 Higher-order polynomials (high model complexity) fit the training data extremely well and the test data extremely poorly. These have low bias on the training data, but very high variance.
