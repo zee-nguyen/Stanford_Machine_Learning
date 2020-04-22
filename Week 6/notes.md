@@ -1,10 +1,11 @@
 ## Troubleshooting errors in our predictions
 
- - Getting more data (training examples)
- - Trying smaller sets of features
- - Trying additional features
- - Trying polynomial features
- - Increasing/decreasing lambda λ
+ - Getting more data (training examples) --> fixes high variance
+ - Trying smaller sets of features --> fixes high variance
+ - Trying additional features --> fixes high bias (usually)
+ - Trying polynomial features --> fixes high bias
+ - Increasing lambda λ --> fixes high variance
+ - Decreasing lambda λ --> fixes high bias
 
 ## Evaluating a Learning Algorithm
 
@@ -51,3 +52,5 @@ Approach:
 4. Compute the cross validation error using the learned Θ (computed with λ) on the J-CV **without regularization or λ = 0**
 5. Select the best combo that produces the lowest error on the cross validation set
 6. Using the best combo of Θ and λ, apply it on J-test to see if it has a good generalization of the problem.
+
+## Learning Curves
