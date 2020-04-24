@@ -10,13 +10,25 @@ function [X_poly] = polyFeatures(X, p)
 X_poly = zeros(numel(X), p);
 
 % ====================== YOUR CODE HERE ======================
-% Instructions: Given a vector X, return a matrix X_poly where the p-th 
+% Instructions: Given a vector X, return a matrix X_poly where the p-th
 %               column of X contains the values of X to the p-th power.
 %
-% 
+%
 
 
+% X_poly is mxp
+% Ex:
+%
+% c1| c2 | c3 | c4 |
+% ------------------
+% 1 | 1  | 1  | 1  |
+% 2 | 4  | 8  | 16 |
+% 3 | 9  | 27 | 81 |
+% 4 |16  | 64 |256 |
 
+for i=1:p
+    X_poly(:, i) = X_poly(:, 1) .^ i;
+end
 
 
 
