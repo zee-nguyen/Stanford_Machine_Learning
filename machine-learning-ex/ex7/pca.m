@@ -20,8 +20,13 @@ S = zeros(n);
 %       number of examples).
 %
 
+% compute the covariance matrix
+Sigma = (1/m) * (X' * X);
 
+% use the "svd" function to compute the eigenvectors
+%               and eigenvalues of the covariance matrix.
 
+[U,S,V] = svd(Sigma);
 
 
 

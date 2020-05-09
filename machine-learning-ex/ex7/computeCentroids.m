@@ -27,7 +27,20 @@ centroids = zeros(K, n);
 %
 
 
-
+for k = 1:K
+    sum_k = zeros(n,1);
+    % num_k is the number of points in cluster k
+    num_k = 0;
+    for i = 1:m
+        if idx(i) == k
+            % sum_k is n x 1
+            % X(i,:) is 1 x n - need to add its transpose
+            sum_k = sum_k + X(i,:)';
+            num_k = num_k + 1;
+        end
+        centroids(k,:) = sum_k/num_k;
+    end
+end
 
 
 
