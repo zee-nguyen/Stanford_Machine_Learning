@@ -545,9 +545,45 @@ Recall = True positives / # actual positives = True positives / (True positives 
 - Reduce data from n-D to k-D
 - Compute "covariance matrix"
 - Compute "eigenvectors" of matrix Σ
-    - In Octave: `[U, S, V] = svd(Sigma)`
-    - SVD: Signular Value Decomposition
-    - Sigma is n x n matrix
-        - In Octave, the vectorized implementation of Signma is: `Sigma = (1/m) * X' * X`
 
+**Notes**:
+- In Octave: `[U, S, V] = svd(Sigma)`
+- SVD: Signular Value Decomposition
+- k: number of principal components (that we want to retain)
+- Sigma is n x n matrix
+    - In Octave, the vectorized implementation of Signma is: `Sigma = (1/m) * X' * X`
+
+
+![](assets/W8-pca-summary.png)
 ![](assets/PCA-algo.png)
+
+Putting together:
+```
+[U, S, V] = svd(Sigma)
+Ureduce = U(:, 1:k)
+z = Ureduce' * x
+```
+
+### Reconstruction from Compressed Representation
+
+`X-approx = Ureduce * z`
+
+### Choosing the Number of Principal Components k
+
+![](assets/W8-chossingk-PCA.png)
+![](assets/W8-chossingk-PCA2.png)
+
+- run SVD once, which gives us the S matrix
+- Using the procedure on the right, slowly increase k and pick smallest value of k for which the formula at the bottom is satisfied (>= 0.99)
+
+### Advice for Applying PCA
+
+![](/assets/W8-applying-PCA.png)
+
+### Application of PCA
+
+1. Compression --> Choose k by % of variance retain
+- Reduce memory/disk needed to store data
+- Speed up learning algorithm
+
+2. Visualization --> k = 2 or k = 3
