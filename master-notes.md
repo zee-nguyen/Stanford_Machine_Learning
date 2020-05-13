@@ -616,3 +616,63 @@ z = Ureduce' * x
 4. content based recommendations,because we assume that we have features for the different movies.that capture what is the content of these movies. How romantic/action is this movie?And we are really using features of the content of the movies to make our predictions.
 
 5. Suppose there is only one user and he has rated every movie in the training set. This implies that nu=1 and r(i,j)=1 for every i,j . In this case, the cost function J(θ) is equivalent to the one used for regularized linear regression.
+
+## Collaborative Filtering
+
+* CF has an interesting property: feature learning can start to learn for itself what features to use.
+
+![](/assets/w9/cf-1.jpg)
+
+* we do not know the values of these features of movies. But assume we've gone to each of our users, and each of our users has told us how much they like the romantic movies and how much they like action packed movies.each user J just tells us what is the value of theta J for them.
+
+### Optimization algorithm
+
+![](/assets/w9/cf-2.jpg)
+![](/assets/w9/cf-3.jpg)
+
+1. kind of a chicken and egg problem.So randomly guess some value of the thetas.Now based on your initial random guess for the thetas, you can then go ahead and use the procedure to learn features for your different movies.You need toinitialize them to different values so that you learn different features and parameters (i.e., perform symmetry breaking).
+
+2. by rating a few movies myself,the system learn better features and then these features can be used by the system to make better movie predictions for everyone else.And so there is a sense of collaboration where every user is helping the system learn better features for the common good. This is this collaborative filtering.
+
+### Collaborative Filtering Algorithm
+
+* more efficient algorithm that doesn't need to go back and forth between the x's and the thetas, but that can solve for theta and x simultaneously
+
+![](/assets/w9/cf-4.jpg)
+
+1. Sum over J says, for every user, the sum of all the movies rated by that user.for every movie I,sum over all the users J that have rated that movie.
+2. just something over all the user movie pairs for which you have a rating.
+3. if you were to hold the x's constant and just minimize with respect to the thetas then you'd be solving exactly the first problem.
+
+4. Previously we have been using this convention that we have a feature x0 equals one that corresponds to an interceptor.When we are using this sort of formalism where we're are actually learning the features,we are actually going to do away with feature x0.And so the features we are going to learn x, will be in Rn.
+
+![](/assets/w9/cf-algo.jpg)
+
+## Vectorization: Low Rank Matrix Factorization
+
+* an vectorization way of writing out the predictions of the collaborative filtering algorithm
+
+![](/assets/w9/cf-vec-1.jpg)
+![](/assets/w9/cf-vec-2.jpg)
+
+* the collaborative filtering algorithm is also calledlow rank matrix factorization. And this term comes from the property that this matrix x times theta transpose has a mathematical property in linear algebra called that this is a low rank matrix.
+
+**Use the learned features in order to find related movies**
+
+![](/assets/w9/cf-vec-3.jpg)
+
+### Implementational Detail: Mean Normalization
+
+* Perform mean normalization as a sort of pre-processing step for collaborative filtering Depending on your data set
+
+#### Users who have not rated any movies
+
+![](/assets/w9/cf-mean-norm.jpg)
+
+#### Mean Normalization
+
+![](/assets/w9/cf-mean-norm-1.jpg)
+
+2. my prediction where in my training data subtracted off all the means and so when we make predictions and we need toadd back in these means mu i for movie i.
+
+3. in case you have some movies with no ratings, you can normalize the different columns to have means zero, instead of normalizing the rows to have mean zero, but if you really have a movie with no rating, maybe you just shouldn't recommend that movie to anyone. And so, taking care of the case of a user who hasn'trated anything might be more important than taking care of the case of a movie that hasn't gotten a single rating.
