@@ -1,6 +1,6 @@
 # Notes
 
-## W1 
+## W1
 
 ## W2 - Multivariate Linear Regression
 
@@ -13,32 +13,19 @@ Feature scaling is a method used to normalize the range of independent variables
 
 For example, if we use Euclidean distance and one of the features has a broad range of values, our result will be governed by this feature &rarr; the range of all features should be normalized so that each feature contributes approximately proportionately to the final distance.
 
-
 It makes sure features are on similar scale &rarr; helps GD converge more quickly.
-
-
 
 Ex:
 
-
-
 x<sub>1</sub> = size (0 - 2000 feet<sup>2</sup>) &rarr; x<sub>1</sub> = size (in feet<sup>2</sup>) / 2000
-
-
 
 x<sub>2</sub> = number of bedrooms (1-5) &rarr; x<sub>2</sub> = number of bedrooms / 5
 
-
-
 ### 2. Mean normalization
-
-
 
 Replace x<sub>i</sub> with x<sub>i</sub> - μ<sub>i</sub> to make features have approximately zero mean.
 
 Do not apply to x<sub>0</sub> = 1
-
-
 
 There is another form of the means normalization which is when we divide by the standard deviation which is also called standardization.
 
@@ -46,16 +33,15 @@ There is another form of the means normalization which is when we divide by the 
 
 Make a plot with number of iterations on the x-axis. Now plot the cost function, J(θ) over the number of iterations of gradient descent. If J(θ) ever increases, then you probably need to decrease α.
 
-
 **Automatic convergence test**
 
 Declare convergence if J(θ) decreases by less than E in one iteration, where E is some small value such as 10−3. However in practice it's difficult to choose this threshold value.
 
 ### Summary
 
-- If α is too small: slow convergence.
+* If α is too small: slow convergence.
 
-- If α is too large: ￼J(θ) may not decrease on every iteration and thus may not converge.
+* If α is too large: ￼J(θ) may not decrease on every iteration and thus may not converge.
 
 ## Notes on Vectorization
 
@@ -65,7 +51,7 @@ Declare convergence if J(θ) decreases by less than E in one iteration, where E 
 
 **Pseudocode:**
 
-```
+``` 
 prediction = 0.0;
 for j = 1:n+1:  // MathLab is 1-indexed
         prediction = prediction + theta(j) * x(j)
@@ -74,11 +60,11 @@ end;
 
 ### Vectorized implementation
 
-- More efficient
+* More efficient
 
 **Pseudocode:**
 
-```
+``` 
 prediction = theta' * x;
 ```
 
@@ -88,7 +74,7 @@ prediction = theta' * x;
 
 If you are wondering how the seemingly complex looking for loop can be vectorized and cramped into a single one line expression, then please read on. The vectorized form is:
 
-```
+``` 
 theta = theta - (alpha/m) * (X' * (X * theta - y))
 ```
 
@@ -100,26 +86,28 @@ This is the gradient descent algorithm to fine tune the value of θ:
 
 Assume that the following values of X, y and θ are given:
 
-- m = number of training examples
-- n = number of features + 1
+* m = number of training examples
+* n = number of features + 1
+
 enter image description here
 
 ![X, y, theta](https://i.stack.imgur.com/Cdilc.png)
 
 Here:
 
-- m = 5 (training examples)
-- n = 4 (features+1)
-- X = m x n matrix
-- y = m x 1 vector matrix
-- θ = n x 1 vector matrix
-- xi is the ith training example
-- xj is the jth feature in a given training example
+* m = 5 (training examples)
+* n = 4 (features+1)
+* X = m x n matrix
+* y = m x 1 vector matrix
+* θ = n x 1 vector matrix
+* xi is the ith training example
+* xj is the jth feature in a given training example
 
-Further,
+Further, 
 
-- `h(x) = ([X] * [θ])` (m x 1 matrix of predicted values for our training set)
-- `h(x)-y = ([X] * [θ] - [y])` (m x 1 matrix of Errors in our predictions)
+* `h(x) = ([X] * [θ])` (m x 1 matrix of predicted values for our training set)
+* `h(x)-y = ([X] * [θ] - [y])` (m x 1 matrix of Errors in our predictions)
+
 whole objective of machine learning is to minimize Errors in predictions. Based on the above corollary, our Errors matrix is m x 1 vector matrix as follows:
 
 ![](https://i.stack.imgur.com/W8ath.png)
@@ -132,25 +120,27 @@ This can be simplified as:
 
 ![](https://i.stack.imgur.com/TZ96A.png)
 
-- `[E]' x [X]` will give us a row vector matrix, since E' is 1 x m matrix and X is m x n matrix. But we are interested in getting a column matrix, hence we transpose the resultant matrix.
+* `[E]' x [X]` will give us a row vector matrix, since E' is 1 x m matrix and X is m x n matrix. But we are interested in getting a column matrix, hence we transpose the resultant matrix.
+
 More succinctly, it can be written as:
 
 ![](https://i.stack.imgur.com/pzwQL.png)
 
-Since `(A * B)' = (B' * A')`, and `A'' = A`, we can also write the above as
+Since `(A * B)' = (B' * A')` , and `A'' = A` , we can also write the above as
 
 ![](https://i.stack.imgur.com/z0xA3.png)
 
 This is the original expression we started out with:
 
-```
+``` 
 theta = theta - (alpha/m) * (X' * (X * theta - y))
 ```
 
 ---
+
 ## W3 - Advanced Optimization
 
-```
+``` 
 function [jVal, gradient] = costfunction(theta)
 
 // cost function J
@@ -163,10 +153,11 @@ gradient(1) = 2 * (theta(1)-5);
 gradient(2) = 2 * (theta(2)-5);
 ```
 
-In Octave, we can use `fminunc()`
+In Octave, we can use `fminunc()` 
 
 Options is a data structure that stores the options we want to set. Here, we set the number of max iterations to 100 iterations.
-```
+
+``` 
 options = optimset('GradObj', 'on', 'MaxIter', '100');
 
 // initial guess of theta
@@ -187,7 +178,7 @@ Theta is a n-dimentional vector.
 
 Note that MathLab indexes from 1, not 0.
 
-```
+``` 
 function [jVal, gradient] = costFunction(theta)
 
 jVal = [Code to compute J(theta)]
@@ -211,29 +202,29 @@ gradient(n+1) = [Code to compute partial derivative of J(theta) using theta(n+1)
 2. Just right
 3. Overfitting
 
-
 ### Underfitting
 
-- Also called "high bias"
-- When the form of our hypothesis function h maps poorly to the trend of the data
-- Usually caused by a function that is too simple or uses too few features.
+* Also called "high bias"
+* When the form of our hypothesis function h maps poorly to the trend of the data
+* Usually caused by a function that is too simple or uses too few features.
 
 ### Overfitting
 
-- Also called "high variance"
-- A hypothesis function that fits the available data but does not generalize well to predict new data
-- Usually caused by a complicated function that creates a lot of unnecessary curves and angles unrelated to the data.
-- If we have too many features, the learned hypothesis may fit the training set very well (cost function is almost 0), but may fail to generalize to new examples (predict prices on new examples, in the housing price case).
+* Also called "high variance"
+* A hypothesis function that fits the available data but does not generalize well to predict new data
+* Usually caused by a complicated function that creates a lot of unnecessary curves and angles unrelated to the data.
+* If we have too many features, the learned hypothesis may fit the training set very well (cost function is almost 0), but may fail to generalize to new examples (predict prices on new examples, in the housing price case).
 
 ### Address Overfitting:
+
 1. Reduce number of features:
-- Manually select which features to keep
-- Model selection algorithm
-- Cons: Throw features away --> less info
+* Manually select which features to keep
+* Model selection algorithm
+* Cons: Throw features away --> less info
 
 2. Regularization
-- Keep all features but reduce magnitude/values of parameters
-- Works well when we have a lot of features, each of which contributes a bit to predicting *y*.
+* Keep all features but reduce magnitude/values of parameters
+* Works well when we have a lot of features, each of which contributes a bit to predicting *y*.
 
 ## Regularized Cost Function
 
@@ -249,9 +240,10 @@ With regularization, we can add another term to control the 2 goals (1 is to fit
 
 **Why adding a positive term makes this work?**
 
-- Regularization increases the cost based on the absolute value of the thetas. Since you’re minimizing the cost, that puts pressure on the thetas to be smaller (i.e. reduce the magnitude of theta).
+* Regularization increases the cost based on the absolute value of the thetas. Since you’re minimizing the cost, that puts pressure on the thetas to be smaller (i.e. reduce the magnitude of theta).
 
 ---
+
 ## W4 - Neural Network
 
 ## Model Representation
@@ -260,11 +252,11 @@ With regularization, we can add another term to control the 2 goals (1 is to fit
 
 The Neural Network is constructed from 3 type of layers:
 
-- Input layer — initial data for the neural network. usually are noted as vector X
+* Input layer — initial data for the neural network. usually are noted as vector X
 
-- Hidden layers — intermediate layer between input and output layer and place where all the computation is done. These circles represent the “activation” nodes and usually are noted as W (weights) or θ.
+* Hidden layers — intermediate layer between input and output layer and place where all the computation is done. These circles represent the “activation” nodes and usually are noted as W (weights) or θ.
 
-- Output layer — produce the result for given inputs (or the predicted value).
+* Output layer — produce the result for given inputs (or the predicted value).
 
 Each node is connected with each node from the next layer and each connection (black arrow) has particular weight. Weight can be seen as impact that that node has on the node from the next layer.
 
@@ -278,9 +270,9 @@ Each node is connected with each node from the next layer and each connection (b
 
 ![](https://miro.medium.com/max/1400/1*pR6bSQXgC1Y_lYTeLDqVqg.png)
 
--  “bias” nodes as x₀ and a₀ respectively
+*  “bias” nodes as x₀ and a₀ respectively
 
-- the input nodes can be placed in one vector X and the nodes from the hidden layer in vector A.
+* the input nodes can be placed in one vector X and the nodes from the hidden layer in vector A.
 
 ![](https://miro.medium.com/max/928/1*GkER6dYs0kF42MZRXscDXA.png)
 
@@ -295,8 +287,6 @@ To compute the “activation” nodes for the hidden layer, we need to multiply 
 And by multiplying hidden layer vector with weights matrix θ for the second layer(A*θ) we get output for the hypothesis function:
 
 ![](https://miro.medium.com/max/1024/1*iQJVglZqVZ6A2er1tNRf0w.png)
-
-
 
 Ref: https://towardsdatascience.com/everything-you-need-to-know-about-neural-networks-and-backpropagation-machine-learning-made-easy-e5285bc2be3a
 
@@ -334,16 +324,16 @@ The resulting hypothesis for one set of inputs may look like [0 0 1 0], which re
 
 ### Why do we need to provide the cost function and the derivative?
 
-- Cost function is to use in forward-propagate (performing this by directly applying the cost function)
+* Cost function is to use in forward-propagate (performing this by directly applying the cost function)
 
-- Derivative of the cost function is to use in back-propagate.
+* Derivative of the cost function is to use in back-propagate.
 
 Ref: https://medium.com/datathings/neural-networks-and-backpropagation-explained-in-a-simple-way-f540a3611f5e
-
 
 ## W5
 
 ---
+
 ## W6
 
 ## Troubleshooting errors in our predictions
@@ -358,10 +348,12 @@ Ref: https://medium.com/datathings/neural-networks-and-backpropagation-explained
 ## Evaluating a Learning Algorithm
 
 1. Split data into training and test, 70% and 30% respectively. Procedure becomes
+
  - Learn Θ and minimize J-train(Θ) using the training set
  - Compute error on test set J-test(Θ)
 
 2. Split the data into 60% training data, 20% cross validation data, and 20% test data.
+
  - Approach: compute the J-train(Θ) on various polynomial degrees
  - Optimize Θ using training set for each polynomial degrees
  - Find the polynomial degree *d* with the least error using the **cross validation set**
@@ -372,12 +364,14 @@ Ref: https://medium.com/datathings/neural-networks-and-backpropagation-explained
 How to diagnose these 2 things?
 
 1. High bias (underfitting):
+
  - J-train and J-CV high
  - J-CV is roughly the same as J-train
 
 Why? Because they both are underfitted
 
 2. High variance (overfitting):
+
  - J-train is low
  - J-CV is much higher than J-train
 
@@ -389,11 +383,13 @@ But overfitting doesn't generalize well to new data, so J(CV) is higher.
 ## Regularization and Bias/Variance
 
 The problem of choosing lambda λ:
-- Large λ (λ = 10000 for example) means we're punishing the extra features heavily, which leads to the values of thetas being really low --> h(x) ~= theta-0 --> High bias (underfitting)
-- Small λ (λ = 0 for example) means that we're fitting the data set perfectly -- i.e. High variance (overfitting)
-- Want: Just right λ
+
+* Large λ (λ = 10000 for example) means we're punishing the extra features heavily, which leads to the values of thetas being really low --> h(x) ~= theta-0 --> High bias (underfitting)
+* Small λ (λ = 0 for example) means that we're fitting the data set perfectly -- i.e. High variance (overfitting)
+* Want: Just right λ
 
 Approach:
+
 1. Create a list of λ (multiple of 2, for ex: i.e. λ ∈ {0,0.01,0.02,0.04,0.08,0.16,0.32,0.64,1.28,2.56,5.12,10.24})
 2. Create a set of models with different degrees/any other variants
 3. Iterate through the λs and for each λ, go through all the models to learn some Θ (on training data)
@@ -403,8 +399,8 @@ Approach:
 
 ## Diagnosing Neural Networks
 
-- A neural network with fewer parameters is prone to underfitting. It is also computationally cheaper.
-- A large neural network with more parameters is prone to overfitting. It is also computationally expensive. In this case you can use regularization (increase λ) to address the overfitting.
+* A neural network with fewer parameters is prone to underfitting. It is also computationally cheaper.
+* A large neural network with more parameters is prone to overfitting. It is also computationally expensive. In this case you can use regularization (increase λ) to address the overfitting.
 
 Using a single hidden layer is a good starting default. You can train your neural network on a number of hidden layers using your cross validation set. You can then select the one that performs best.
 
@@ -422,13 +418,13 @@ In reality, we would want to choose a model somewhere in between, that can gener
 
 System Design Example:
 
-Given a data set of emails, we could construct a vector for each email. Each entry in this vector represents a word. The vector normally contains 10,000 to 50,000 entries gathered by finding the most frequently used words in our data set. If a word is to be found in the email, we would assign its respective entry a 1, else if it is not found, that entry would be a 0. Once we have all our x vectors ready, we train our algorithm and finally, we could use it to classify if an email is a spam or not.
+Given a data set of emails, we could construct a vector for each email. Each entry in this vector represents a word. The vector normally contains 10, 000 to 50, 000 entries gathered by finding the most frequently used words in our data set. If a word is to be found in the email, we would assign its respective entry a 1, else if it is not found, that entry would be a 0. Once we have all our x vectors ready, we train our algorithm and finally, we could use it to classify if an email is a spam or not.
 
 So how could you spend your time to improve the accuracy of this classifier?
 
-- Collect lots of data (for example "honeypot" project but doesn't always work)
-- Develop sophisticated features (for example: using email header data in spam emails)
-- Develop algorithms to process your input in different ways (recognizing misspellings in spam).
+* Collect lots of data (for example "honeypot" project but doesn't always work)
+* Develop sophisticated features (for example: using email header data in spam emails)
+* Develop algorithms to process your input in different ways (recognizing misspellings in spam).
 
 It is difficult to tell which of the options will be most helpful.
 
@@ -436,9 +432,9 @@ It is difficult to tell which of the options will be most helpful.
 
 The recommended approach to solving machine learning problems is to:
 
-- Start with a simple algorithm, implement it quickly, and test it early on your cross validation data.
-- Plot learning curves to decide if more data, more features, etc. are likely to help.
-- Manually examine the errors on examples in the cross validation set and try to spot a trend where most of the errors were made.
+* Start with a simple algorithm, implement it quickly, and test it early on your cross validation data.
+* Plot learning curves to decide if more data, more features, etc. are likely to help.
+* Manually examine the errors on examples in the cross validation set and try to spot a trend where most of the errors were made.
 
 For example, assume that we have 500 emails and our algorithm misclassifies a 100 of them. We could manually analyze the 100 emails and categorize them based on what type of emails they are. We could then try to come up with new cues and features that would help us classify these 100 emails correctly. Hence, if most of our misclassified emails are those which try to steal passwords, then we could find some features that are particular to those emails and add them to our model. We could also see how classifying each word according to its root changes our error rate:
 
@@ -472,52 +468,53 @@ Recall = True positives / # actual positives = True positives / (True positives 
 
 **Trading Off Precision and Recall**
 
-- Use the F score to compare the precision/recall numbers and select the algorithm with the higher F score
-
+* Use the F score to compare the precision/recall numbers and select the algorithm with the higher F score
 
 ---
+
 ## W7 - SVM in practice
 
-- Use SVM software package (eg. `liblibear`, `libsvm`, ...) to solve for parameters θ.
-- But we need to specify:
+* Use SVM software package (eg. `liblibear` , `libsvm` , ...) to solve for parameters θ.
+* But we need to specify:
     - Choice of parameter C
     - Choice of kernel (similarity function)
 
 ### Kernel
+
 1. No kernel ("linear kernel")
-  - Predict "y=1" if θ' * x >= 0
-  - Use when: n (# of features) is large, m (# of training set) is small
+  + Predict "y=1" if θ' * x >= 0
+  + Use when: n (# of features) is large, m (# of training set) is small
 
 2. Gaussian kernel
-  - Need to choose σ^2
+  + Need to choose σ^2
     - large σ^2: high bias, low variance
     - small σ^2: low bias, high variance
-  - Good when n is small, m is large
-  - **Need to perform feature scaling before using the Gaussian kernel** to reduce the effect of some features that have large ranges
+  + Good when n is small, m is large
+  + **Need to perform feature scaling before using the Gaussian kernel** to reduce the effect of some features that have large ranges
 
 ### Multi-class Classification
 
-- Many SVM packages already have built-in multi-class classification functionality
-- Otherwise, use one-vs-all method:
+* Many SVM packages already have built-in multi-class classification functionality
+* Otherwise, use one-vs-all method:
     - Train K SVMs, one to distinguish y = i from the rest, for i = 1, 2, ..., K
     - Get θ(1), θ(2),..., θ(K)
     - Pick class i with largest θ(i)-transposed * x
 
 ### Logistic Regression vs. SVMs
 
-- n = # of features
-- m = # of training examples
+* n = # of features
+* m = # of training examples
 
 1. **If n is large (relative to m)** – for example, spam classification problem with n = 10,000 features and m = 10 to 10,000 examples (or  Text Classification, as each alphabet is a new feature)
 
-- Use logistic regression, or SVM without a kernel ("linear kernel")
-- **Why?**: if we have so many features with smaller training sets, a linear function will probably do fine + we don't really have enough data to fit a very complicated nonlinear function.
+* Use logistic regression, or SVM without a kernel ("linear kernel")
+* **Why?**: if we have so many features with smaller training sets, a linear function will probably do fine + we don't really have enough data to fit a very complicated nonlinear function.
 
 2. **If n is small and m is intermediate** – for ex, n is up to 1000 and m ~ 10 to 50,000
-- SVM with Gaussian kernel
+* SVM with Gaussian kernel
 
 3. **If n is small, m is large** (n=1-1000, m=50,000+)
-- Create/add more features, then use logistic regression or SVM without a kernel
+* Create/add more features, then use logistic regression or SVM without a kernel
 
 **Note**: Neural network likely to work well for most of these settings, but may be slower to train.
 
@@ -531,34 +528,36 @@ Recall = True positives / # actual positives = True positives / (True positives 
 
 ![](assets/PCA-LinearReg.png)
 
-- PCA is a dimension reduction technique. PCA does not involve a dependent variable: All the variables are treated the same. It is primarily dimension reduction method.
-- Linear regression attempts to model the relationship between two variables by fitting a linear equation to observed data.
+* PCA is a dimension reduction technique. PCA does not involve a dependent variable: All the variables are treated the same. It is primarily dimension reduction method.
+* Linear regression attempts to model the relationship between two variables by fitting a linear equation to observed data.
 
 ### Principal Component Analysis Algorithm
 
 **Preprocessing** (feature scaling/mean normalization)
 
-- Mean Normalization: Replace each feature x with x - its mean.
-- Feature scaling -- so all features have comparable range of values *((x - mean)/ range)*
+* Mean Normalization: Replace each feature x with x - its mean.
+* Feature scaling -- so all features have comparable range of values *((x - mean)/ range)*
 
 **Algorithm**
-- Reduce data from n-D to k-D
-- Compute "covariance matrix"
-- Compute "eigenvectors" of matrix Σ
+
+* Reduce data from n-D to k-D
+* Compute "covariance matrix"
+* Compute "eigenvectors" of matrix Σ
 
 **Notes**:
-- In Octave: `[U, S, V] = svd(Sigma)`
-- SVD: Signular Value Decomposition
-- k: number of principal components (that we want to retain)
-- Sigma is n x n matrix
-    - In Octave, the vectorized implementation of Signma is: `Sigma = (1/m) * X' * X`
 
+* In Octave: `[U, S, V] = svd(Sigma)` 
+* SVD: Signular Value Decomposition
+* k: number of principal components (that we want to retain)
+* Sigma is n x n matrix
+    - In Octave, the vectorized implementation of Signma is: `Sigma = (1/m) * X' * X` 
 
 ![](assets/W8-pca-summary.png)
 ![](assets/PCA-algo.png)
 
 Putting together:
-```
+
+``` 
 [U, S, V] = svd(Sigma)
 Ureduce = U(:, 1:k)
 z = Ureduce' * x
@@ -566,15 +565,15 @@ z = Ureduce' * x
 
 ### Reconstruction from Compressed Representation
 
-`X-approx = Ureduce * z`
+`X-approx = Ureduce * z` 
 
 ### Choosing the Number of Principal Components k
 
 ![](assets/W8-chossingk-PCA.png)
 ![](assets/W8-chossingk-PCA2.png)
 
-- run SVD once, which gives us the S matrix
-- Using the procedure on the right, slowly increase k and pick smallest value of k for which the formula at the bottom is satisfied (>= 0.99)
+* run SVD once, which gives us the S matrix
+* Using the procedure on the right, slowly increase k and pick smallest value of k for which the formula at the bottom is satisfied (>= 0.99)
 
 ### Advice for Applying PCA
 
@@ -583,7 +582,97 @@ z = Ureduce' * x
 ### Application of PCA
 
 1. Compression --> Choose k by % of variance retain
-- Reduce memory/disk needed to store data
-- Speed up learning algorithm
+* Reduce memory/disk needed to store data
+* Speed up learning algorithm
 
 2. Visualization --> k = 2 or k = 3
+
+----
+
+# Week 9 - Recommender System
+
+![](/assets/w9/slide1.jpg)
+
+## Content Based Recommendations
+
+![](/assets/w9/content-based.jpg)
+
+1. add an extra feature interceptor feature X0, which is equal to 1
+
+2. set n to be the number of features, not counting this X zero intercept term so n is equal to two because we have two features x1 and x2
+
+3. to make predictions, we could treat predicting the ratings of each user as aseparate linear regression problem. So specifically lets say that for each user j we are going to learn a parameter vector theta J which would be in r n+1, where n is the number of features,and we're going to predict user J as rating movie I, with just the inner product between the parameters vector theta and the features "XI".
+
+### Optimization algorithm: Estimate of parameter vector theta j
+
+![](/assets/w9/content-based2.jpg)
+![](/assets/w9/content-based3.jpg)
+
+1. to simplify the subsequent math,get rid of this term MJ.that's just a constant.
+2. because our regularization term here regularizes only the values of theta JK for K not equal to zero.we don't regularize theta 0.
+
+3. can also plug them into a more advanced optimization algorithm like cluster gradient or L-BFGS and use that to try to minimize the cost function J as well.
+
+4. content based recommendations,because we assume that we have features for the different movies.that capture what is the content of these movies. How romantic/action is this movie?And we are really using features of the content of the movies to make our predictions.
+
+5. Suppose there is only one user and he has rated every movie in the training set. This implies that nu=1 and r(i,j)=1 for every i,j . In this case, the cost function J(θ) is equivalent to the one used for regularized linear regression.
+
+## Collaborative Filtering
+
+* CF has an interesting property: feature learning can start to learn for itself what features to use.
+
+![](/assets/w9/cf-1.jpg)
+
+* we do not know the values of these features of movies. But assume we've gone to each of our users, and each of our users has told us how much they like the romantic movies and how much they like action packed movies.each user J just tells us what is the value of theta J for them.
+
+### Optimization algorithm
+
+![](/assets/w9/cf-2.jpg)
+![](/assets/w9/cf-3.jpg)
+
+1. kind of a chicken and egg problem.So randomly guess some value of the thetas.Now based on your initial random guess for the thetas, you can then go ahead and use the procedure to learn features for your different movies.You need toinitialize them to different values so that you learn different features and parameters (i.e., perform symmetry breaking).
+
+2. by rating a few movies myself,the system learn better features and then these features can be used by the system to make better movie predictions for everyone else.And so there is a sense of collaboration where every user is helping the system learn better features for the common good. This is this collaborative filtering.
+
+### Collaborative Filtering Algorithm
+
+* more efficient algorithm that doesn't need to go back and forth between the x's and the thetas, but that can solve for theta and x simultaneously
+
+![](/assets/w9/cf-4.jpg)
+
+1. Sum over J says, for every user, the sum of all the movies rated by that user.for every movie I,sum over all the users J that have rated that movie.
+2. just something over all the user movie pairs for which you have a rating.
+3. if you were to hold the x's constant and just minimize with respect to the thetas then you'd be solving exactly the first problem.
+
+4. Previously we have been using this convention that we have a feature x0 equals one that corresponds to an interceptor.When we are using this sort of formalism where we're are actually learning the features,we are actually going to do away with feature x0.And so the features we are going to learn x, will be in Rn.
+
+![](/assets/w9/cf-algo.jpg)
+
+## Vectorization: Low Rank Matrix Factorization
+
+* an vectorization way of writing out the predictions of the collaborative filtering algorithm
+
+![](/assets/w9/cf-vec-1.jpg)
+![](/assets/w9/cf-vec-2.jpg)
+
+* the collaborative filtering algorithm is also calledlow rank matrix factorization. And this term comes from the property that this matrix x times theta transpose has a mathematical property in linear algebra called that this is a low rank matrix.
+
+**Use the learned features in order to find related movies**
+
+![](/assets/w9/cf-vec-3.jpg)
+
+### Implementational Detail: Mean Normalization
+
+* Perform mean normalization as a sort of pre-processing step for collaborative filtering Depending on your data set
+
+#### Users who have not rated any movies
+
+![](/assets/w9/cf-mean-norm.jpg)
+
+#### Mean Normalization
+
+![](/assets/w9/cf-mean-norm-1.jpg)
+
+2. my prediction where in my training data subtracted off all the means and so when we make predictions and we need toadd back in these means mu i for movie i.
+
+3. in case you have some movies with no ratings, you can normalize the different columns to have means zero, instead of normalizing the rows to have mean zero, but if you really have a movie with no rating, maybe you just shouldn't recommend that movie to anyone. And so, taking care of the case of a user who hasn'trated anything might be more important than taking care of the case of a movie that hasn't gotten a single rating.
