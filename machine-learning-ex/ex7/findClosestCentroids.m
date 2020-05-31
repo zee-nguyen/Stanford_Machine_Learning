@@ -22,7 +22,18 @@ idx = zeros(size(X,1), 1);
 %
 
 
-
+for i = 1:size(X,1)
+    % have a min value that keeps track of the min distance
+    min_dst = inf;
+    for j = 1:K
+        diff = X(i,:) - centroids(j,:);
+        dst = diff * diff';
+        if dst < min_dst
+            min_dst = dst;
+            idx(i) = j;
+        end
+    end    
+end
 
 
 
