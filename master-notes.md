@@ -620,6 +620,7 @@ z = Ureduce' * x
 ## Collaborative Filtering
 
 * CF has an interesting property: feature learning can start to learn for itself what features to use.
+* The term "collaborative" is used because each time a user rates a movie for example, that helps the systems to better learn the features and the theta parameter --> i.e. collaborate on improving the recommendations.
 
 ![](/assets/w9/cf-1.jpg)
 
